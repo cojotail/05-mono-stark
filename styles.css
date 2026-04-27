@@ -1,0 +1,312 @@
+/* ============================================================
+   Login — Mono Stark
+   Brutalist. JetBrains Mono, sharp corners, electric accent.
+   ============================================================ */
+
+:root {
+  /* ---------- Color tokens ---------- */
+  --color-bg:           #ffffff;
+  --color-surface:      #ffffff;
+  --color-border:       #000000;
+  --color-border-soft:  #d4d4d4;
+  --color-text:         #000000;
+  --color-text-muted:   #525252;
+  --color-accent:       #0040ff;        /* electric blue */
+  --color-accent-hover: #002fbb;
+  --color-on-accent:    #ffffff;
+  --color-danger:       #d40000;
+  --color-focus-ring:   rgba(0, 64, 255, 0.18);
+  --color-danger-ring:  rgba(212, 0, 0, 0.18);
+
+  /* ---------- Typography ---------- */
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo,
+               Monaco, Consolas, monospace;
+
+  /* ---------- Spacing & shape ---------- */
+  --radius:   0;                        /* sharp everywhere */
+  --transition: 120ms linear;
+}
+
+/* ============================================================
+   Reset & base
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+input, button, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: none; }
+
+a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--color-accent-hover); }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+
+.auth {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+}
+
+/* ============================================================
+   Brand
+   ============================================================ */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text);
+  margin-bottom: 32px;
+  text-decoration: none;
+}
+.brand:hover { text-decoration: none; }
+
+.brand-mark { color: var(--color-text); flex-shrink: 0; }
+
+.brand-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.brand-cursor {
+  display: inline-block;
+  color: var(--color-accent);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 50%   { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+
+.auth-header { margin-bottom: 32px; }
+
+.auth-eyebrow {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0;
+  margin-bottom: 12px;
+}
+
+.auth-header h1 {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;            /* 24px */
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.auth-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   Form
+   ============================================================ */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.field label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+}
+
+.field-link {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+.field-link:hover { color: var(--color-accent-hover); }
+
+.field input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  transition:
+    border-color var(--transition),
+    box-shadow   var(--transition),
+    background   var(--transition);
+  -webkit-appearance: none;
+       appearance: none;
+}
+
+.field input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-focus-ring);
+}
+
+.field input:user-invalid {
+  border-color: var(--color-danger);
+}
+.field input:user-invalid:focus {
+  box-shadow: 0 0 0 4px var(--color-danger-ring);
+}
+
+/* ============================================================
+   Primary button
+   ============================================================ */
+
+.btn-primary {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 20px;
+  background: var(--color-text);
+  color: var(--color-on-accent);
+  border: 2px solid var(--color-text);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  transition:
+    background var(--transition),
+    color      var(--transition),
+    transform  var(--transition);
+}
+
+.btn-primary:hover  {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.btn-primary:active { transform: translate(2px, 2px); }
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-focus-ring);
+}
+
+/* ============================================================
+   Secondary actions & footer
+   ============================================================ */
+
+.auth-alt {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+.auth-alt a {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.auth-foot {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.auth-foot a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.auth-foot a:hover { color: var(--color-text); }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (min-width: 600px) {
+  .auth { padding: 48px 24px; }
+  .auth-card { padding: 40px 36px; }
+  .auth-header h1 { font-size: 1.75rem; }
+}
+
+@media (min-width: 1024px) {
+  .auth-card { padding: 44px 40px; }
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .brand-cursor { animation: none; opacity: 1; }
+}
